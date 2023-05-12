@@ -39,8 +39,6 @@ return require("packer").startup(function(use)
 
   -- Get yourself a nice tree view on the left-hand-side when you want it.
   use { "nvim-tree/nvim-tree.lua" }
-  use { 'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'} }
-  use { 'nvim-treesitter/nvim-treesitter-context' }
 
   -- Adds "gc" and "gcc" to comment out based on file-extension
   use { "tpope/vim-commentary" }
@@ -61,7 +59,8 @@ return require("packer").startup(function(use)
   --       {"itchyny/lightline.vim"},
   --   }
   -- }
-  use "itchyny/lightline.vim"
+  use 'folke/tokyonight.nvim'
+  use 'itchyny/lightline.vim'
 
   -- Scala metals
   use {
