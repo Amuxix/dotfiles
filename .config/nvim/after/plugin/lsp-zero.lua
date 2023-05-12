@@ -13,7 +13,7 @@ lsp.ensure_installed({
   'pyright',
 
   -- Ruby
-  'ruby_ls',
+  -- 'ruby_ls',
 
   -- Docker
   'dockerls',
