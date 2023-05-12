@@ -37,6 +37,13 @@ return require("packer").startup(function(use)
     }
   }
 
+  use {
+    'sindrets/diffview.nvim',
+    requires = {
+      { 'nvim-lua/plenary.nvim' }
+    }
+  }
+
   -- Get yourself a nice tree view on the left-hand-side when you want it.
   use { "nvim-tree/nvim-tree.lua" }
 
