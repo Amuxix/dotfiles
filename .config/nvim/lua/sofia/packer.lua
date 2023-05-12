@@ -66,6 +66,12 @@ return require("packer").startup(function(use)
   end,
   }
 
+  use {
+    'itchyny/lightline.vim',
+    requires = {
+      use { 'tpope/vim-fugitive' },
+    }
+  }
   -- This plugin provides LanguageClient-neovim status indicator for lightline.
   -- use {
   --   "palpatineli/lightline-lsc-nvim",
@@ -75,11 +81,12 @@ return require("packer").startup(function(use)
   --   }
   -- }
   use 'folke/tokyonight.nvim'
-  use 'itchyny/lightline.vim'
 
   use 'folke/trouble.nvim'
   use 'mg979/vim-visual-multi'
   use 'ggandor/leap.nvim'
+  use 'tpope/vim-fugitive'
+
 
   -- Scala metals
   use {
