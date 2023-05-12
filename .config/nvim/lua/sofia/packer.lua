@@ -40,6 +40,14 @@ return require("packer").startup(function(use)
   -- Get yourself a nice tree view on the left-hand-side when you want it.
   use { "nvim-tree/nvim-tree.lua" }
 
+  -- Process comments with text like "TODO" properly
+  use {
+    'folke/todo-comments.nvim',
+    requires = {
+      { 'nvim-lua/plenary.nvim' }
+    }
+  }
+
   -- Adds "gc" and "gcc" to comment out based on file-extension
   use { "tpope/vim-commentary" }
 
@@ -61,6 +69,10 @@ return require("packer").startup(function(use)
   -- }
   use 'folke/tokyonight.nvim'
   use 'itchyny/lightline.vim'
+
+  use 'folke/trouble.nvim'
+  use 'mg979/vim-visual-multi'
+  use 'ggandor/leap.nvim'
 
   -- Scala metals
   use {
