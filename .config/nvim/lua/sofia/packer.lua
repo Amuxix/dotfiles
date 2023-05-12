@@ -1,4 +1,4 @@
-    vim.cmd [[packadd packer.nvim]]
+vim.cmd [[packadd packer.nvim]]
 
 return require("packer").startup(function(use)
   -- Packer can manage itself
@@ -12,10 +12,48 @@ return require("packer").startup(function(use)
     }
   }
 
-  -- Get yourself a nice tree view on the left-hand-side when you want it.
-  use { "nvim-tree/nvim-tree.lua" }
   use { 'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'} }
   use { 'nvim-treesitter/nvim-treesitter-context' }
+  use {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v1.x',
+    requires = {
+      -- LSP Support
+      {'neovim/nvim-lspconfig'},             -- Required
+      {'williamboman/mason.nvim'},           -- Optional
+      {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+      -- Autocompletion
+      {'hrsh7th/nvim-cmp'},         -- Required
+      {'hrsh7th/cmp-nvim-lsp'},     -- Required
+      {'hrsh7th/cmp-buffer'},       -- Optional
+      {'hrsh7th/cmp-path'},         -- Optional
+      {'saadparwaiz1/cmp_luasnip'}, -- Optional
+      {'hrsh7th/cmp-nvim-lua'},     -- Optional
+
+      -- Snippets
+      {'L3MON4D3/LuaSnip'},             -- Required
+      {'rafamadriz/friendly-snippets'}, -- Optional
+    }
+  }
+
+  use {
+    'sindrets/diffview.nvim',
+    requires = {
+      { 'nvim-lua/plenary.nvim' }
+    }
+  }
+
+  -- Get yourself a nice tree view on the left-hand-side when you want it.
+  use { "nvim-tree/nvim-tree.lua" }
+
+  -- Process comments with text like "TODO" properly
+  use {
+    'folke/todo-comments.nvim',
+    requires = {
+      { 'nvim-lua/plenary.nvim' }
+    }
+  }
 
   -- Adds "gc" and "gcc" to comment out based on file-extension
   use { "tpope/vim-commentary" }
@@ -36,7 +74,12 @@ return require("packer").startup(function(use)
   --       {"itchyny/lightline.vim"},
   --   }
   -- }
-  use "itchyny/lightline.vim"
+  use 'folke/tokyonight.nvim'
+  use 'itchyny/lightline.vim'
+
+  use 'folke/trouble.nvim'
+  use 'mg979/vim-visual-multi'
+  use 'ggandor/leap.nvim'
 
   -- Scala metals
   use {
