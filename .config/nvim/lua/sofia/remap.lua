@@ -14,8 +14,7 @@ vim.keymap.set("n", "A", "zzA")
 vim.keymap.set("n", "o", "zzo")
 vim.keymap.set("n", "O", "zzO")
 
--- "q" starts a macro be default. I hit it a *bit* to often, so I set it to sift-q, to make it less likely ot hit on accident
-vim.keymap.set("n", "Q", "q")
+-- "q" starts a macro be default. Now does nothing.
 vim.keymap.set("n", "q", "<Nop>")
 
 -- "p" usually pastes clipboard *and* copies to current clipboard. You might want to paste one thing all over, so this keybind sets space-p to paste and copy to the null (delete) clipboard, so you keep your current copy
@@ -40,3 +39,5 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- Cancel search with Control-C
 vim.keymap.set("n", "<C-c>", ":noh<CR>")
+
+vim.keymap.set("n", "QQ", ":q!")
