@@ -14,6 +14,7 @@ return require("packer").startup(function(use)
 
   use { 'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'} }
   use { 'nvim-treesitter/nvim-treesitter-context' }
+  use { 'HiPhish/nvim-ts-rainbow2' }
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
@@ -72,14 +73,6 @@ return require("packer").startup(function(use)
       use { 'tpope/vim-fugitive' },
     }
   }
-  -- This plugin provides LanguageClient-neovim status indicator for lightline.
-  -- use {
-  --   "palpatineli/lightline-lsc-nvim",
-  --   requires = {
-  --       {"autozimu/LanguageClient-neovim"},
-  --       {"itchyny/lightline.vim"},
-  --   }
-  -- }
   use 'folke/tokyonight.nvim'
 
   use 'folke/trouble.nvim'
