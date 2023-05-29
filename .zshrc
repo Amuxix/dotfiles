@@ -110,12 +110,16 @@ export EDITOR='nvim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias t='tree -c'
 alias grep='grep --color=always'
-alias l='ls -lhT --color=always'
+alias l='exa -lb'
 alias la='l -a'
 alias lx='l --sort=extension' # aka l -x
 alias lt='l --sort=time -r' # aka l -t  -r = reverse order while sorting
 alias v=nvim
+alias cat=vimcat
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

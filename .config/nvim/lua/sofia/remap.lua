@@ -7,8 +7,6 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>cd", vim.cmd.Ex)
 
 -- Make vim center the screen (zz) when going to insert mode. It'll be disorientating at first, but it's great.
-vim.keymap.set("n", "i", "zzi")
-vim.keymap.set("n", "I", "zzI")
 vim.keymap.set("n", "a", "zza")
 vim.keymap.set("n", "A", "zzA")
 vim.keymap.set("n", "o", "zzo")
@@ -26,18 +24,50 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- space-d, same as space-p
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({"n", "v"}, "dd", [["_dd]])
 
--- Move lines around. In normal, shift-k/J will move line under cursor up or down, in visual, the while block will move
-vim.keymap.set("n", "K", ":m -2<cr>")
-vim.keymap.set("n", "J", ":m +1<cr>")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 
--- Better movement
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- Cancel search with Control-Q
+vim.keymap.set("n", "<C-q>", ":noh<CR>")
 
--- Cancel search with Control-C
-vim.keymap.set("n", "<C-c>", ":noh<CR>")
+-- Quit without saving
+vim.keymap.set("n", "QQ", ":q!<CR>")
 
-vim.keymap.set("n", "QQ", ":q!")
+-- Movement
+vim.keymap.set({"n", "o", "v", "x"}, "m", "h")
+vim.keymap.set({"n", "o", "v", "x"}, "n", "j")
+vim.keymap.set({"n", "o", "v", "x"}, "e", "k")
+vim.keymap.set({"n", "o", "v", "x"}, "i", "l")
+-- Word movement
+vim.keymap.set({"n", "o", "v", "x"}, "j", "b")
+vim.keymap.set({"n", "o", "v", "x"}, "r", "e")
+vim.keymap.set({"n", "o", "v", "x"}, "J", "B")
+vim.keymap.set({"n", "o", "v", "x"}, "R", "E")
+-- Page Movement
+vim.keymap.set("n", "<PageUp>", "<C-u>zz")
+vim.keymap.set("n", "<PageDown>", "<C-d>zz")
+
+-- Insert
+vim.keymap.set("n", "t", "zzi")
+vim.keymap.set("n", "T", "zzI")
+
+-- Cut Copy Paste
+vim.keymap.set({"n", "o", "v", "x"}, "<C-x>", "d")
+vim.keymap.set({"n", "o", "v", "x"}, "<C-X>", "dd")
+vim.keymap.set({"n", "o", "v", "x"}, "<C-c>", "y")
+vim.keymap.set({"n", "o", "v", "x"}, "<C-C>", "yy")
+vim.keymap.set({"n", "o", "v", "x"}, "<C-v>", "p")
+vim.keymap.set({"n", "o", "v", "x"}, "<C-V>", "P")
+
+-- Undo and Redo
+vim.keymap.set({"n", "o", "v", "x"}, "<C-z>", "u")
+vim.keymap.set({"n", "o", "v", "x"}, "<C-y>", "<C-R>")
+
+-- Move lines around. In normal, shift-N/E will move line under cursor up or down, in visual, the while block will move
+vim.keymap.set("n", "N", ":move +1<cr>")
+vim.keymap.set("n", "E", ":move -2<cr>")
+vim.keymap.set("v", "N", ":move '>+1<CR>gv=gv")
+vim.keymap.set("v", "E", ":move '<-2<CR>gv=gv")
+vim.keymap.set("n", "<C-N>", ":copy.<cr>")
+vim.keymap.set("v", "<C-N>", ":'<,'>copy '><cr>")
+
