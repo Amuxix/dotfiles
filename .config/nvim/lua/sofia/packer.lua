@@ -67,16 +67,14 @@ return require("packer").startup(function(use)
   end,
   }
 
+
   use {
-    'itchyny/lightline.vim',
-    requires = {
-      use { 'tpope/vim-fugitive' },
-    }
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
-  use 'folke/tokyonight.nvim'
 
   use 'folke/trouble.nvim'
-  use 'mg979/vim-visual-multi'
+  -- use 'mg979/vim-visual-multi'
   use 'ggandor/leap.nvim'
   use 'tpope/vim-fugitive'
 
