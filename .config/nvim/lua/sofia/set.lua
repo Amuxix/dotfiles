@@ -10,7 +10,7 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 -- make "enter" enter to the right indentation level
-vim.opt.smartindent = true
+-- vim.opt.smartindent = true
 
 -- Slightly highlight the line of the cursor
 vim.opt.cursorline = true

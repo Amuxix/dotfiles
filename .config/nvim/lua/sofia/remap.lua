@@ -13,7 +13,7 @@ vim.keymap.set("n", "o", "zzo")
 vim.keymap.set("n", "O", "zzO")
 
 -- "q" starts a macro be default. Now does nothing.
-vim.keymap.set("n", "q", "<Nop>")
+vim.keymap.set("n", "q", "")
 
 -- "p" usually pastes clipboard *and* copies to current clipboard. You might want to paste one thing all over, so this keybind sets space-p to paste and copy to the null (delete) clipboard, so you keep your current copy
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -28,21 +28,21 @@ vim.keymap.set({"n", "v"}, "dd", [["_dd]])
 
 
 -- Cancel search with Control-Q
-vim.keymap.set("n", "<C-q>", ":noh<CR>")
+vim.keymap.set("n", "<C-q>", "<cmd>noh<cr>")
 
 -- Quit without saving
-vim.keymap.set("n", "QQ", ":q!<CR>")
+vim.keymap.set("n", "QQ", "<cmd>q!<cr>")
 
 -- Movement
-vim.keymap.set({"n", "o", "v", "x"}, "m", "h")
-vim.keymap.set({"n", "o", "v", "x"}, "n", "j")
-vim.keymap.set({"n", "o", "v", "x"}, "e", "k")
-vim.keymap.set({"n", "o", "v", "x"}, "i", "l")
+vim.keymap.set({"n", "v"}, "m", "h")
+vim.keymap.set({"n", "v"}, "n", "j")
+vim.keymap.set({"n", "v"}, "e", "k")
+vim.keymap.set({"n", "v"}, "i", "l")
 -- Word movement
-vim.keymap.set({"n", "o", "v", "x"}, "j", "b")
-vim.keymap.set({"n", "o", "v", "x"}, "r", "e")
-vim.keymap.set({"n", "o", "v", "x"}, "J", "B")
-vim.keymap.set({"n", "o", "v", "x"}, "R", "E")
+vim.keymap.set({"n", "v"}, "j", "b")
+vim.keymap.set({"n", "v"}, "r", "e")
+vim.keymap.set({"n", "v"}, "J", "B")
+vim.keymap.set({"n", "v"}, "R", "E")
 -- Page Movement
 vim.keymap.set("n", "<PageUp>", "<C-u>zz")
 vim.keymap.set("n", "<PageDown>", "<C-d>zz")
@@ -52,22 +52,25 @@ vim.keymap.set("n", "t", "zzi")
 vim.keymap.set("n", "T", "zzI")
 
 -- Cut Copy Paste
-vim.keymap.set({"n", "o", "v", "x"}, "<C-x>", "d")
-vim.keymap.set({"n", "o", "v", "x"}, "<C-X>", "dd")
-vim.keymap.set({"n", "o", "v", "x"}, "<C-c>", "y")
-vim.keymap.set({"n", "o", "v", "x"}, "<C-C>", "yy")
-vim.keymap.set({"n", "o", "v", "x"}, "<C-v>", "p")
-vim.keymap.set({"n", "o", "v", "x"}, "<C-V>", "P")
+vim.keymap.set({"n", "v"}, "<C-x>", "d")
+vim.keymap.set({"n", "v"}, "<C-X>", "dd")
+vim.keymap.set({"n", "v"}, "<C-c>", "y")
+vim.keymap.set({"n", "v"}, "<C-C>", "yy")
+vim.keymap.set({"n", "v"}, "<C-v>", "p")
+vim.keymap.set({"n", "v"}, "<C-V>", "P")
 
 -- Undo and Redo
-vim.keymap.set({"n", "o", "v", "x"}, "<C-z>", "u")
-vim.keymap.set({"n", "o", "v", "x"}, "<C-y>", "<C-R>")
+vim.keymap.set({"n", "v"}, "<C-z>", "u")
+vim.keymap.set({"n", "v"}, "<C-y>", "<C-R>")
+
+-- Save
+vim.keymap.set({"n", "v"}, "<C-s>", "<cmd>w<cr>")
 
 -- Move lines around. In normal, shift-N/E will move line under cursor up or down, in visual, the while block will move
-vim.keymap.set("n", "N", ":move +1<cr>")
-vim.keymap.set("n", "E", ":move -2<cr>")
-vim.keymap.set("v", "N", ":move '>+1<CR>gv=gv")
-vim.keymap.set("v", "E", ":move '<-2<CR>gv=gv")
-vim.keymap.set("n", "<C-N>", ":copy.<cr>")
-vim.keymap.set("v", "<C-N>", ":'<,'>copy '><cr>")
+vim.keymap.set("n", "N", "<cmd>move +1<cr>")
+vim.keymap.set("n", "E", "<cmd>move -2<cr>")
+vim.keymap.set("v", "N", ":move '>+1<cr>gv=gv")
+vim.keymap.set("v", "E", ":move '<-2<cr>gv=gv")
+vim.keymap.set("n", "<C-N>", "<cmd>copy.<cr>")
+vim.keymap.set("v", "<C-N>", "<cmd>'<,'>copy '><cr>")
 
