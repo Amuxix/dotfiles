@@ -4,13 +4,13 @@ vim.opt.nu = true -- Make line numbers appear to the left of the text
 vim.opt.relativenumber = true -- Make these line numbers "relative." It's hard to explain. See what it does by disabeling it. Trust me, you'll want this, it's great for vim keybinds to have it like this
 
 -- Tab display
-vim.opt.tabstop = 2 
+vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 -- Make the tab key do 2 spaces
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 -- make "enter" enter to the right indentation level
--- vim.opt.smartindent = true
+vim.opt.smartindent = true
 
 -- Slightly highlight the line of the cursor
 vim.opt.cursorline = true
@@ -47,4 +47,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank { higroup = 'IncSearch', timeout = 500 }
   end,
+})
+
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+    group = vim.api.nvim_create_augroup('remove_whitespace', {}),
+    pattern = "*",
+    command = "%s/\\s\\+$//e",
 })
