@@ -1,5 +1,8 @@
 -- TODO this should get highlighted
 
+-- Needed since nvim 0.10.0
+vim.opt.termguicolors = false
+
 vim.cmd([[
   augroup lena_colors
   " lena.vim - Vim color scheme for 16-color terminals, heavily based on noctu

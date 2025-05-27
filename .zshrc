@@ -110,7 +110,7 @@ export EDITOR='nvim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias t='tree -c'
 alias grep='grep --color=always'
-alias l='exa -lb'
+alias l='eza -lb'
 alias la='l -a'
 alias lx='l --sort=extension' # aka l -x
 alias lt='l --sort=time -r' # aka l -t  -r = reverse order while sorting
@@ -128,3 +128,8 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(direnv hook zsh)"
+eval "$(zoxide init --cmd cd --no-cmd zsh)"
+
+# Created by `pipx` on 2024-07-15 10:40:16
+export PATH="$PATH:/Users/amuxix/.local/bin"

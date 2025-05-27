@@ -1,7 +1,4 @@
 return {
-  -- Packer can manage itself
-  { "wbthomason/packer.nvim" },
-
   -- Better colorcolumn
   { "xiyaowong/virtcolumn.nvim" },
 
@@ -9,7 +6,6 @@ return {
   { "tpope/vim-commentary" },
 
   { "ConradIrwin/vim-bracketed-paste" },
-  { "HiPhish/nvim-ts-rainbow2" },
   { "mg979/vim-visual-multi" },
   { "tpope/vim-fugitive" },
 
