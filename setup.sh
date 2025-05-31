@@ -40,14 +40,6 @@ brew install --cask firefox intellij-idea enpass slack smooze-pro spotify alfred
 # Install powerlevel10k theme
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 
-# Clone your dotfiles repo
-if git clone https://github.com/Amuxix/dotfiles.git; then
-  cd dotfiles || exit 1
-else
-  echo "Failed to clone dotfiles repo."
-  exit 1
-fi
-
 DOTFILES="$(pwd)"
 
 files=(".zshrc" ".p10k.zsh" ".config/nvim")
@@ -64,8 +56,6 @@ do
   fi
   ln -sf "$DOTFILES/$file" "$f"
 done
-
-cd ..
 
 # Change default shell to zsh if available
 ZSH_PATH="$(which zsh)"
