@@ -49,17 +49,11 @@ echo >> "$HOME/.zprofile"
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Install oh-my-zsh (does not require sudo)
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 # Install CLI tools
 brew install git fzf direnv zoxide eza vimcat nvim scala sbt zsh-syntax-highlighting zsh-autosuggestions
 
 # Install GUI apps
 brew install --cask firefox intellij-idea enpass slack smooze-pro spotify alfred discord iterm2 font-fira-code-nerd-font
-
-# Install powerlevel10k theme
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 
 # Check if we are already inside a 'dotfiles' directory
 if [[ "$(basename "$PWD")" == "dotfiles" ]] || [[ "$PWD" == */dotfiles/* ]]; then
@@ -90,6 +84,17 @@ do
   fi
   ln -sf "$DOTFILES/$file" "$f"
 done
+
+# Install oh-my-zsh
+if [[ -d "$HOME/.oh-my-zsh" ]]; then
+  echo "oh-my-zsh already installed. Skipping."
+else
+  echo "Installing oh-my-zsh..."
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+# Install powerlevel10k theme
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 
 # Change default shell to zsh if available
 ZSH_PATH="$(which zsh)"
