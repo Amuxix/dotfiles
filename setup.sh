@@ -1,4 +1,19 @@
 #!/bin/bash
+set -euo pipefail
+
+# Check if Xcode Command Line Tools are installed
+if ! xcode-select -p &>/dev/null; then
+  echo "Installing Xcode Command Line Tools..."
+  xcode-select --install
+
+  echo "Waiting for Xcode Command Line Tools installation to complete..."
+  until xcode-select -p &>/dev/null; do
+    sleep 5
+  done
+  echo "Xcode Command Line Tools installed."
+else
+  echo "Xcode Command Line Tools already installed."
+fi
 
 # Check if user can run sudo
 if sudo -v >/dev/null 2>&1; then
@@ -14,6 +29,12 @@ if sudo -v >/dev/null 2>&1; then
   # Install Rosetta only on Apple Silicon
   if [[ "$(uname -m)" == "arm64" ]]; then
     sudo softwareupdate --install-rosetta --agree-to-license
+
+    echo "Waiting for Rosetta (oahd) to be ready..."
+    until /usr/bin/pgrep oahd &>/dev/null; do
+      sleep 5
+    done
+    echo "Rosetta installed and ready."
   else
     echo "Rosetta install skipped: not Apple Silicon."
   fi
@@ -21,7 +42,7 @@ else
   echo "You do not have sudo privileges, skipping sudo commands."
 fi
 
-# Install homebrew (does not require sudo)
+# Install Homebrew (does not require sudo)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo >> "$HOME/.zprofile"
@@ -77,4 +98,3 @@ if [[ -n "$ZSH_PATH" ]]; then
 else
   echo "zsh not found, skipping shell change."
 fi
-
