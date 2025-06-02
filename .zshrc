@@ -77,11 +77,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sudo safe-paste)
+plugins=(git sudo safe-paste zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+setopt EXTENDED_HISTORY
+setopt inc_append_history_time
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -127,7 +129,9 @@ fi
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# Set up fzf key bindings and fuzzy completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 eval "$(direnv hook zsh)"
 eval "$(zoxide init --cmd cd --no-cmd zsh)"
 
