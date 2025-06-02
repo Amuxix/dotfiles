@@ -43,11 +43,15 @@ else
 fi
 
 # Install Homebrew (does not require sudo)
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-echo >> "$HOME/.zprofile"
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if command -v brew &>/dev/null; then
+  echo "Homebrew already installed. Skipping installation."
+else
+  echo "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo >> "$HOME/.zprofile"
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Install CLI tools
 brew install git fzf direnv zoxide eza vimcat nvim scala sbt zsh-syntax-highlighting zsh-autosuggestions
@@ -103,3 +107,8 @@ if [[ -n "$ZSH_PATH" ]]; then
 else
   echo "zsh not found, skipping shell change."
 fi
+
+echo "Launching iTerm and Enpass..."
+sleep 2
+open -a "iTerm"
+open -a "Enpass"
