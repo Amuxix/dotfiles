@@ -59,11 +59,14 @@ brew install -q git fzf direnv zoxide eza vimcat nvim scala sbt zsh-syntax-highl
 # Install GUI apps
 brew install -q --cask firefox intellij-idea enpass slack smooze-pro spotify alfred discord iterm2 font-fira-code-nerd-font
 
-# Check if we are already inside a 'dotfiles' directory
-if [[ "$(basename "$PWD")" == "dotfiles" ]] || [[ "$PWD" == */dotfiles/* ]]; then
+if [[ -d "./dotfiles/.git" ]]; then
+  echo "Found existing dotfiles directory. Fetching latest changes..."
+  cd dotfiles || exit 1
+  git fetch origin
+elif [[ "$(basename "$PWD")" == "dotfiles" ]] || [[ "$PWD" == */dotfiles/* ]]; then
   echo "Already inside a 'dotfiles' directory. Skipping clone."
 else
-  # Clone your dotfiles repo
+  echo "Cloning dotfiles repository..."
   if git clone https://github.com/Amuxix/dotfiles.git; then
     cd dotfiles || exit 1
   else
