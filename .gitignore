@@ -3,3 +3,5 @@ old/
 /**/*.old
 **/lazy-lock.json
 **/.luarc.json
+.idea
+

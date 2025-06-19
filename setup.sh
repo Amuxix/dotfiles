@@ -54,7 +54,7 @@ else
 fi
 
 # Install CLI tools
-brew install -q git fzf direnv zoxide eza vimcat nvim scala sbt zsh-syntax-highlighting zsh-autosuggestions
+brew install -q git fzf direnv zoxide eza vimcat nvim scala sbt npm zsh-syntax-highlighting zsh-autosuggestions
 
 # Install GUI apps
 brew install -q --cask firefox intellij-idea enpass slack smooze-pro spotify alfred discord iterm2 font-fira-code-nerd-font
