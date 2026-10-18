@@ -54,7 +54,7 @@ else
 fi
 
 # Install CLI tools
-brew install -q git fzf direnv zoxide eza vimcat nvim scala sbt npm zsh-syntax-highlighting zsh-autosuggestions
+brew install -q git fzf direnv zoxide eza vimcat nvim scala sbt npm
 
 # Install zsh plugins
 git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/autoupdate
