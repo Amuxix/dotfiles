@@ -56,8 +56,15 @@ fi
 # Install CLI tools
 brew install -q git fzf direnv zoxide eza vimcat nvim scala sbt npm zsh-syntax-highlighting zsh-autosuggestions
 
+# Install zsh plugins
+git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/autoupdate
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
 # Install GUI apps
 brew install -q --cask firefox intellij-idea enpass slack smooze-pro spotify alfred discord iterm2 font-fira-code-nerd-font
+
+cd ~
 
 if [[ -d "./dotfiles/.git" ]]; then
   echo "Found existing dotfiles directory. Fetching latest changes..."
@@ -91,7 +98,13 @@ do
     fi
     mv -i "$f" old/
   fi
-  ln -sf "$DOTFILES/$file" "$f"
+  if [[ "$file" == ".zshrc" ]]; then
+    target="$DOTFILES/zsh/macos.zsh"
+  else
+    target="$DOTFILES/$file"
+  fi
+
+  ln -sf "$target" "$f"
 done
 
 # Install oh-my-zsh
